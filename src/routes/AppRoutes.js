@@ -29,6 +29,15 @@ export default function AppRoutes() {
         <NavigationBar/>
         <Routes>
 
+            <Route
+                path="/"
+                element={
+                    <PrivateRoute>
+                        <HomePage />
+                    </PrivateRoute>
+                }
+            />
+
             {/* Public Routes */}
             <Route path={AUTH_ROUTES.login} element={<LoginPage/>}/>
             <Route path={AUTH_ROUTES.register} element={<RegisterPage/>}/>
