@@ -33,7 +33,7 @@ This project is a full-stack **Employee Management System** built with:
 ## 🟣 Deployment Instructions
 
 - **Frontend:** Deployed on Vercel  
-  `https://101513972-comp3123-assignment2-reac.vercel.app`
+  [https://101513972-comp3123-assignment2-reac.vercel.app](https://101513972-comp3123-assignment2-reac.vercel.app)
 
 - **Backend:** Deployed on Vercel / any cloud service  
-  `https://comp3123assignment01.vercel.app`
+  [https://comp3123assignment01.vercel.app](https://comp3123assignment01.vercel.app)
