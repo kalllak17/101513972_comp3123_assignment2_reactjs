@@ -7,6 +7,7 @@ import {useNavigate} from "react-router-dom";
 import axios from "../utils/axios";
 import EMPLOYEE_ENDPOINT from "../api/employee_endpoints";
 import EMPLOYEE_ROUTES from "../routes/employee_paths";
+import {toBase64} from "../utils/base64";
 
 const formatDateForInput = (isoDate) => isoDate ? isoDate.split('T')[0] : '';
 
@@ -22,7 +23,8 @@ function EmployeeForm({employee, mode = 'create'}) {
         "position": '',
         "salary": '',
         "date_of_joining": '',
-        "department": ''
+        "department": '',
+        "profile_picture": "",
     });
 
     const [validated, setValidated] = useState(false);
@@ -40,6 +42,7 @@ function EmployeeForm({employee, mode = 'create'}) {
             date_of_joining: employee.date_of_joining
                 ? employee.date_of_joining.split('T')[0]
                 : '',
+            profile_picture: employee.profile_picture || '',
         });
     }, [employee]);
 
@@ -50,6 +53,19 @@ function EmployeeForm({employee, mode = 'create'}) {
             [name]: value,
         }));
     };
+
+    const handleImageUpload = async (e) => {
+        const file = e.target.files[0];
+        if (!file) return;
+
+        const base64 = await toBase64(file);
+
+        setData((prev) => ({
+            ...prev,
+            profile_picture: base64,
+        }));
+    };
+
 
     const handleSubmit = async (event) => {
         event.preventDefault();
@@ -91,7 +107,6 @@ function EmployeeForm({employee, mode = 'create'}) {
                     navigate(EMPLOYEE_ROUTES.details(employee._id));
                 }
             }
-            // setData(initialEmployee);
 
         } catch (error) {
             // console.error("Error adding employee:", error);
@@ -208,6 +223,23 @@ function EmployeeForm({employee, mode = 'create'}) {
                     <Form.Control.Feedback type="invalid">
                         Please provide a valid date.
                     </Form.Control.Feedback>
+                </Form.Group>
+            </Row>
+            <Row className="mb-3">
+                <Form.Group as={Col} md="6" controlId="profile_picture">
+                    <Form.Label>Profile Picture</Form.Label>
+                    <Form.Control
+                        type="file"
+                        accept="image/*"
+                        onChange={handleImageUpload}
+                    />
+                    {data.profile_picture && (
+                        <img
+                            src={data.profile_picture}
+                            alt="Preview"
+                            style={{ width: "150px", marginTop: "10px" }}
+                        />
+                    )}
                 </Form.Group>
             </Row>
 
