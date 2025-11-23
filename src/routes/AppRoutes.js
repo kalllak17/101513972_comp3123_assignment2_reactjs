@@ -31,16 +31,16 @@ export default function AppRoutes() {
 
             <Route path="/" element={
                 <PrivateRoute>
-                        <HomePage/>
-                    </PrivateRoute>
-                }
+                    <HomePage/>
+                </PrivateRoute>
+            }
             />
 
             <Route path="/search" element={
-                    <PrivateRoute>
-                        <EmployeeSearchPage />
-                    </PrivateRoute>
-                }
+                <PrivateRoute>
+                    <EmployeeSearchPage/>
+                </PrivateRoute>
+            }
             />
 
 
