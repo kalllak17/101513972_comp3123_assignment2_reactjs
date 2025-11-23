@@ -27,7 +27,9 @@ function EmployeeDetails({employee}) {
                 <Card.Subtitle>{employee.position}</Card.Subtitle>
                 <Card.Img variant="top" src={employee.profile_picture} />
                 <Card.Text>
-                    {Object.entries(employee).map(([key, value]) => (
+                    {Object.entries(employee)
+                        .filter(([key]) => key !== "profile_picture")
+                        .map(([key, value]) => (
                         <div key={key}>
                             <strong>{Capitalize(key)}:</strong> {String(value ?? "")}
                         </div>
