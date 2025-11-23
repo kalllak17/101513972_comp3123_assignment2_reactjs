@@ -235,7 +235,7 @@ function EmployeeForm({employee, mode = 'create'}) {
                         onChange={handleImageUpload}
                     />
                     {data.profile_picture && (
-                        <Image src={data.profile_picture} thumbnail className="w-50 h-50"/>
+                        <Image src={data.profile_picture} thumbnail  style={{ width: "150px", marginTop: "10px" }}/>
                     )}
                 </Form.Group>
             </Row>
