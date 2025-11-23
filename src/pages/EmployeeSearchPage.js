@@ -15,6 +15,7 @@ function EmployeeSearchPage(props) {
 
     const [data, setData] = useState([]);
     useEffect(() => {
+        setData([])
         const fetchData = async () => {
             try {
                 const endpoint = EMPLOYEE_ENDPOINT.search;
@@ -31,11 +32,14 @@ function EmployeeSearchPage(props) {
     }, [keyword]);
 
 
-
     return (
         <div>
             <Alert variant="primary">Search result for: {keyword}</Alert>
-            <EmployeeTable data={data} tableHeaders={tableHeaders}/>
+            {data.length === 0 ? (
+                <Alert variant="warning">Nothing found</Alert>
+            ) : (
+                <EmployeeTable data={data} tableHeaders={tableHeaders}/>
+            )}
         </div>
     )
 }
