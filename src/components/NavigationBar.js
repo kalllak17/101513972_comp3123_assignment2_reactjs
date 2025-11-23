@@ -5,6 +5,7 @@ import {Link, useNavigate} from 'react-router-dom';
 import EMPLOYEE_ROUTES from '../routes/employee_paths';
 import AUTH_ROUTES from '../routes/auth_paths';
 import {useAuth} from "../context/AuthContext";
+import SearchBar from "./SearchBar";
 
 function NavigationBar() {
     const {isLoggedIn, logout} = useAuth();
@@ -33,6 +34,7 @@ function NavigationBar() {
                         </>
                     )}
                 </Nav>
+                {isLoggedIn && <SearchBar />}
             </Container>
         </Navbar>
     );

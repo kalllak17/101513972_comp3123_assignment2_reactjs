@@ -1,4 +1,3 @@
-
 const EMPLOYEE_ENDPOINT = {
     getAll: {
         url: '/emp/employees',
@@ -20,6 +19,10 @@ const EMPLOYEE_ENDPOINT = {
         url: (id) => `/emp/employees?eid=${id}`,
         method: 'delete',
     },
+    search: {
+        url: (keyword) => `/emp/search?keyword=${keyword}`,
+        method: 'get',
+    }
 };
 
 
