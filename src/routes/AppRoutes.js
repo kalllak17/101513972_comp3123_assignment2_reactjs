@@ -10,7 +10,7 @@ import EmployeeAddPage from "../pages/EmployeeAddPage";
 import EmployeeDetailsPage from "../pages/EmployeeDetailsPage";
 import EmployeeUpdatePage from "../pages/EmployeeUpdatePage";
 import EmployeeDeletePage from "../pages/EmployeeDeletePage";
-
+import EmployeeSearchPage from "../pages/EmployeeSearchPage"
 import {useAuth} from "../context/AuthContext";
 
 
@@ -29,14 +29,20 @@ export default function AppRoutes() {
         <NavigationBar/>
         <Routes>
 
-            <Route
-                path="/"
-                element={
-                    <PrivateRoute>
+            <Route path="/" element={
+                <PrivateRoute>
                         <HomePage/>
                     </PrivateRoute>
                 }
             />
+
+            <Route path="/search" element={
+                    <PrivateRoute>
+                        <EmployeeSearchPage />
+                    </PrivateRoute>
+                }
+            />
+
 
             {/* Public Routes */}
             <Route path={AUTH_ROUTES.login} element={<LoginPage/>}/>
