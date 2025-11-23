@@ -6,7 +6,7 @@ import EmployeeTable from "../components/EmployeeTable";
 import {Alert} from "react-bootstrap";
 
 
-const tableHeaders = ["_id", "first_name", "last_name", "email"]
+const tableHeaders = ["_id", "first_name", "last_name", "email", "position", "department"]
 
 function EmployeeSearchPage(props) {
 
