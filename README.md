@@ -29,6 +29,7 @@ This project is a full-stack **Employee Management System** built with:
 5. **Session Handling**
 6. **UI/UX**
 
+---
 
 ## 🟣 Deployment Instructions
 
