@@ -8,6 +8,7 @@ import axios from "../utils/axios";
 import EMPLOYEE_ENDPOINT from "../api/employee_endpoints";
 import EMPLOYEE_ROUTES from "../routes/employee_paths";
 import {toBase64} from "../utils/base64";
+import Image from 'react-bootstrap/Image';
 
 const formatDateForInput = (isoDate) => isoDate ? isoDate.split('T')[0] : '';
 
@@ -234,16 +235,14 @@ function EmployeeForm({employee, mode = 'create'}) {
                         onChange={handleImageUpload}
                     />
                     {data.profile_picture && (
-                        <img
-                            src={data.profile_picture}
-                            alt="Preview"
-                            style={{ width: "150px", marginTop: "10px" }}
-                        />
+                        <Image src={data.profile_picture} thumbnail />
                     )}
                 </Form.Group>
             </Row>
 
-            <Button type="submit">Add Employee</Button>
+            <Button type="submit">
+                {mode === "create" ? "Add Employee" : "Update Employee"}
+            </Button>
         </Form>
     );
 }
